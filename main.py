@@ -1,4 +1,4 @@
-VERSION = "v0.5.0"
+VERSION = "v1.0.1"
 AUTHOR = "Egemen Yalin"
 
 import os
@@ -13,8 +13,6 @@ import functions as func
 import instructions as inst
 
 test_case = var.test_cases[-1]
-
-TClen = len(test_case)
 _disable = False
 index = 0
 _times_c_active = False
@@ -34,6 +32,8 @@ for arg in sys.argv:
 		_test_cases_file = open(arg, "r")
 		test_case = [i.strip() for i in _test_cases_file.readlines()]
 		_test_cases_file.close()
+
+TClen = len(test_case)
 
 
 def print_output(
@@ -159,7 +159,9 @@ def proc_case(_case: str) -> list[str] | None:
 					return
 				var.constants[command] = var.addr
 				check_waiters(command)
-				return proc_case(_case[len(command) + 2 :])
+				if split:
+					return proc_case(_case[len(command) + 2 :])
+				return
 			if command in inst.basic_dir:
 				return inst.basic_dir[command](split)
 			if command in inst.command_dir:

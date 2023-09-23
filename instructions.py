@@ -78,10 +78,10 @@ def _jmp_call_main(split_: list[str], type: bool) -> list[str] | None:
 	else:
 		memory_value = var.memory_proc(number, size)
 
-	# *** check error ***
-	tmp = func.findSize(number, forge_sign=True)
-	if size < tmp:
-		func.overflowError(size, tmp, index_)
+		# *** check error ***
+		tmp = func.findSize(number, forge_sign=True)
+		if size < tmp:
+			func.overflowError(size, tmp, index_)
 
 	# *** return ***
 	return (
@@ -249,6 +249,9 @@ def _mov_main(arg1: str, arg2: str, size: int | None = None) -> list[str]:
 				] + retu
 			return _mov_sub(val1_0, val2, size, 0, posiable_start)  # type: ignore
 		elif type == (_REG, _REG):
+			if size == -1:
+				# Reverse of normal register.
+				return ["8e", hex(0xC0 + val2[0] + (val1_0 << 3))[2:]]  # type: ignore
 			if val1_0 == val2[0]:  # type: ignore
 				var.raiseError(
 					"Warning",
@@ -256,9 +259,6 @@ def _mov_main(arg1: str, arg2: str, size: int | None = None) -> list[str]:
 					False,
 					index_,
 				)
-			if size == -1:
-				# Reverse of normal register.
-				return ["8e", hex(0xC0 + val2[0] + (val1_0 << 3))[2:]]  # type: ignore
 			retu.append("88" if size == var.BYTE else "89")
 			retu.append(hex(0xC0 + val1_0 + (val2[0] << 3))[2:])  # type: ignore
 		elif type == (_PTR, _CONST):
@@ -501,9 +501,9 @@ def C_Jcc(command: str, value: str, size: int = var.WORD):
 	else:
 		memory_value = var.memory_proc(number, size)
 
-	tmp = func.findSize(number, forge_sign=True)
-	if size < tmp:
-		func.overflowError(size, tmp, index_)
+		tmp = func.findSize(number, forge_sign=True)
+		if size < tmp:
+			func.overflowError(size, tmp, index_)
 
 	return (
 		([var.STR_BIT_32] if size == var.DWORD else [])

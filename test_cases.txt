@@ -76,3 +76,9 @@ div al
 div cx
 div 0x41
 div .dword 0x41
+---
+org 0xF000
+
+
+jz .short &num1
+con num1 ($+1)
