@@ -1,0 +1,78 @@
+org 0x10
+lodsx .byte
+lodsx .word
+lodsx .dword
+nop
+mov ss, ax
+nop
+mov *&num1, &num2
+mov *0x4321, &num2
+mov *&num1, 0x4321
+nop
+con num1 0xEE
+con num2 0xFF
+---
+jmp .far 0
+jz .far (&num1+$)
+con num1 0x10
+---
+org 0x10
+'''
+ add <a-reg>, <const>
+ add <reg>, <const>
+ add <non-reg8>, <const8>
+'''
+or *0xCC, 0xCC
+def 0xAA
+times (16-$+$$) def 0
+add *(&num1), (&num1)
+def 0xAA
+times (32-$+$$) def 0
+or *(&num1), (&num1+0xF00)
+def 0xAA
+times (48-$+$$) def 0
+adc *(&num1), (&num1)
+def 0xAA
+times (64-$+$$) def 0
+sbb .long *(&num1), (&num1)
+def 0xAA
+times (64+16-$+$$) def 0
+and *(&num1), (&num1+0xFF00)
+def 0xAA
+times (64+32-$+$$) def 0
+sub *(&num1), (&num1+0xFF00)
+def 0xAA
+times (64+48-$+$$) def 0
+xor *(&num1), (&num1)
+def 0xAA
+times (64+64-$+$$) def 0
+cmp *(&num1), (&num1)
+def 0xAA
+times (64+64+16-$+$$) def 0
+con num1 0xEE
+---
+cmp *0x213213 0x1
+---
+rol *&num1, 2
+con num1 0x4321
+---
+test ax, 0x1000
+test eax, 0x100111
+test al, 0x10
+test ah, 0x10
+---
+test ax, &num1
+con num1 4
+---
+test *0x4321, 0
+---
+mul ax
+mul al
+mul cx
+mul 0x41
+mul .dword 0x41
+div ax
+div al
+div cx
+div 0x41
+div .dword 0x41
