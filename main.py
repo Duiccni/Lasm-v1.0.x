@@ -1,4 +1,4 @@
-VERSION = "v1.0.1"
+VERSION = "v0.5.0"
 AUTHOR = "Egemen Yalin"
 
 import os
@@ -21,13 +21,19 @@ _times_c_active = False
 _times_cooldown = 0
 _test_mode = False
 
-if len(sys.argv) == 2:
-	if sys.argv[1] == "debug":
-		var.settings.mode(24, False, False, False, True, True, True)
-	elif sys.argv[1] == "release":
-		var.settings.mode(24, True, False, False, False, True, False)
-else:
-	var.settings.mode(30, False, False, False, False, True, True)
+sys.argv.pop(0)
+
+var.settings.mode(30, False, False, False, False, True, True)
+
+for arg in sys.argv:
+	if arg == "-debug":
+		var.settings.mode(30, False, False, False, True, True, True)
+	elif arg == "-release":
+		var.settings.mode(30, True, False, False, False, True, False)
+	else:
+		_test_cases_file = open(arg, "r")
+		test_case = [i.strip() for i in _test_cases_file.readlines()]
+		_test_cases_file.close()
 
 
 def print_output(
