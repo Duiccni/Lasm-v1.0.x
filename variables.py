@@ -382,10 +382,12 @@ def _split_list(list_: list[str], sep: str = "---") -> list[list[str]]:
 	del tmp
 	return retu
 
-
+'''
 _test_cases_file = open("test_cases.txt")
 test_cases = _split_list(_test_cases_file.readlines())
 _test_cases_file.close()
+'''
+test_cases = [["nop"]]
 
 if __name__ == "__main__":
 	print(colors.DARK, colors.ITALIC, "abc", colors.DARK, "abc", colors.ENDL, "abc")
