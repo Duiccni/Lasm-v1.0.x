@@ -262,6 +262,9 @@ no_input_inst = {
 	"lodsb": ["ac"],
 	"lodsw": ["ad"],
 	"lodsd": [STR_BIT_32, "ad"],
+	"lodsb": ["ac"],
+	"lodsw": ["ad"],
+	"lodsd": [STR_BIT_32, "ad"],
 }
 
 # mbr: 0x55AA
