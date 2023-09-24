@@ -11,6 +11,9 @@ Its also has a lot of features that make it easy to use, such as:
 
 Note: I used Black Formatter for making code more Prettier
 
+## Lasm Code with Lasm-Syntax
+![image](https://github.com/Duiccni/Lasm-v1.0.x/assets/143947543/c7ce0ec4-0121-4536-ac5f-bc290bb6cffb)
+
 Lasm has 3 main codes:
 
 * main.py (Main thread.)
