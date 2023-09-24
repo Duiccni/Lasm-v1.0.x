@@ -300,7 +300,7 @@ def _mov_main(arg1: str, arg2: str, size: int | None = None) -> list[str]:
 					"8c",
 					var.zero_extend(hex((val2[0] << 3) + 6)[2:]),
 				] + retu
-			return _mov_sub(val2[0], val1, size, 2)  # type: ignore
+			return _mov_sub(val2[0], val1, size, 2, posiable_start)  # Bug Fix type: ignore
 	return [var.STR_BIT_32] + retu if size == var.DWORD else retu
 
 
