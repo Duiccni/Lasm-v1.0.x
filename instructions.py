@@ -604,13 +604,14 @@ def C_test(split_: list[str]) -> list[str] | None:
 def _mul_div_main(split_: list[str], args: tuple, size: int = var.WORD) -> list[str] | None:
 	arg1 = _convert_it(split_[0])
 	retu: list[str] = []
-	if len(split_) == 1:
-		retu.append("f6" if size == var.BYTE else "f7")
-		if arg1[1] == _REG:
-			retu.append(hex(args[0] + arg1[0][0])[2:])
-		else:
-			retu.append(args[1])
-			retu += var.memory_proc(arg1[0], var.WORD)
+	if arg1[1] == _REG:
+		size = arg1[0][1]
+	retu.append("f6" if size == var.BYTE else "f7")
+	if arg1[1] == _REG:
+		retu.append(hex(args[0] + arg1[0][0])[2:])
+	else:
+		retu.append(args[1])
+		retu += var.memory_proc(arg1[0], var.WORD)
 	return [var.STR_BIT_32] + retu if size == var.DWORD else retu
 
 
