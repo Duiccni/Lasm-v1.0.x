@@ -31,6 +31,7 @@ When you have the code you can run it with python like:
 
 ```
 python main.py -release <input-file.lasm> <output-file>
+<output-file>_bin.bin
 ```
 
 NOTE: Dont add output file extension to command.
