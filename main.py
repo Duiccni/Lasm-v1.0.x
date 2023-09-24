@@ -288,7 +288,7 @@ if var.waiters:
 print("\nSize:", len(var.memory))
 print(f"Time(μs): {(time.time() - start_t) * 1_000_000:,.0f}")
 
-tmp = os.getcwd() + r"\output.txt"
+tmp = output_path + ".txt" if output_path != None else os.getcwd() + r"\output.txt"
 print(colors.SECOND + tmp)
 output_file = open(tmp, "w")
 output_file.write(" ".join(var.memory))
@@ -297,7 +297,7 @@ output_file.close()
 if var.waiters:
 	print("Binary file skipped becouse of waiters.", var.colors.DARK)
 else:
-	tmp = os.getcwd() + r"\output_bin.bin"
+	tmp = output_path + "_bin.bin" if output_path != None else os.getcwd() + r"\output_bin.bin"
 	print(tmp, var.colors.DARK)
 	output_file = open(tmp, "wb")
 	output_file.write(bytes([int(i, 16) for i in var.memory]))
