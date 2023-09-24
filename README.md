@@ -27,6 +27,14 @@ Once you have Python installed, you can clone the LASM repository from GitHub:
 git clone https://github.com/Duiccni/Lasm-v1.0.x.git
 ```
 
+When you have the code you can run it with python like:
+
+```
+python main.py -release <input-file.lasm> <output-file>
+```
+
+NOTE: Dont add output file extension to command.
+
 ### Unlimited Thanks To
 
 * NASM (Netwide Assembler)
