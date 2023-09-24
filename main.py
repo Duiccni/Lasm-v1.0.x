@@ -23,15 +23,26 @@ sys.argv.pop(0)
 
 var.settings.mode(30, False, False, False, False, True, True)
 
+_rel = True
+canget = False
+input = True
+output_path = None
 for arg in sys.argv:
 	if arg == "-debug":
+		canget = True
 		var.settings.mode(30, False, False, False, True, True, True)
 	elif arg == "-release":
-		var.settings.mode(30, True, False, False, False, True, False)
-	else:
-		_test_cases_file = open(arg, "r")
-		test_case = [i.strip() for i in _test_cases_file.readlines()]
-		_test_cases_file.close()
+		canget = True
+		_rel = False
+		var.settings.mode(52, True, False, False, False, True, False)
+	elif canget:
+		if input:
+			input = False
+			_test_cases_file = open(arg, "r")
+			test_case = [i.strip() for i in _test_cases_file.readlines()]
+			_test_cases_file.close()
+		else:
+			output_path = arg
 
 TClen = len(test_case)
 
