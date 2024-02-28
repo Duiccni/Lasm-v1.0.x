@@ -14,6 +14,8 @@ Note: I used Black Formatter for making code more Prettier
 ## Lasm Code with Lasm-Syntax
 ![image](https://github.com/Duiccni/Lasm-v1.0.x/assets/143947543/c7ce0ec4-0121-4536-ac5f-bc290bb6cffb)
 
+![image](https://github.com/Duiccni/Lasm-v1.0.x/assets/143947543/419d21c0-03c5-42f7-919e-28d1c3d5465e)
+
 Lasm has 3 main codes:
 
 * main.py (Main thread.)
